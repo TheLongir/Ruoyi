@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.ArchiveFileMapper">
+    
+    <resultMap type="ArchiveFile" id="ArchiveFileResult">
+        <result property="id"    column="id"    />
+        <result property="archiveName"    column="archive_name"    />
+        <result property="archiveApartment"    column="archive_apartment"    />
+        <result property="archiveNature"    column="archive_nature"    />
+        <result property="archiveLevel"    column="archive_level"    />
+        <result property="archivePosition"    column="archive_position"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="archiveDescription"    column="archive_description"    />
+    </resultMap>
+
+    <sql id="selectArchiveFileVo">
+        select id, archive_name, archive_apartment, archive_nature, archive_level, archive_position, create_time, update_time, archive_description from archive_file
+    </sql>
+
+    <select id="selectArchiveFileList" parameterType="ArchiveFile" resultMap="ArchiveFileResult">
+        <include refid="selectArchiveFileVo"/>
+        <where>  
+            <if test="archiveName != null  and archiveName != ''"> and archive_name like concat('%', #{archiveName}, '%')</if>
+            <if test="archiveApartment != null  and archiveApartment != ''"> and archive_apartment like concat('%', #{archiveApartment}, '%')</if>
+            <if test="archiveNature != null  and archiveNature != ''"> and archive_nature like concat('%', #{archiveNature}, '%')</if>
+            <if test="archiveLevel != null  and archiveLevel != ''"> and archive_level = #{archiveLevel}</if>
+            <if test="archivePosition != null  and archivePosition != ''"> and archive_position like concat('%', #{archivePosition}, '%')</if>
+            <if test="archiveDescription != null  and archiveDescription != ''"> and archive_description = #{archiveDescription}</if>
+        </where>
+    </select>
+    
+    <select id="selectArchiveFileById" parameterType="Long" resultMap="ArchiveFileResult">
+        <include refid="selectArchiveFileVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertArchiveFile" parameterType="ArchiveFile" useGeneratedKeys="true" keyProperty="id">
+        insert into archive_file
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="archiveName != null">archive_name,</if>
+            <if test="archiveApartment != null">archive_apartment,</if>
+            <if test="archiveNature != null">archive_nature,</if>
+            <if test="archiveLevel != null">archive_level,</if>
+            <if test="archivePosition != null">archive_position,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="archiveDescription != null">archive_description,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="archiveName != null">#{archiveName},</if>
+            <if test="archiveApartment != null">#{archiveApartment},</if>
+            <if test="archiveNature != null">#{archiveNature},</if>
+            <if test="archiveLevel != null">#{archiveLevel},</if>
+            <if test="archivePosition != null">#{archivePosition},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="archiveDescription != null">#{archiveDescription},</if>
+         </trim>
+    </insert>
+
+    <update id="updateArchiveFile" parameterType="ArchiveFile">
+        update archive_file
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="archiveName != null">archive_name = #{archiveName},</if>
+            <if test="archiveApartment != null">archive_apartment = #{archiveApartment},</if>
+            <if test="archiveNature != null">archive_nature = #{archiveNature},</if>
+            <if test="archiveLevel != null">archive_level = #{archiveLevel},</if>
+            <if test="archivePosition != null">archive_position = #{archivePosition},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="archiveDescription != null">archive_description = #{archiveDescription},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteArchiveFileById" parameterType="Long">
+        delete from archive_file where id = #{id}
+    </delete>
+
+    <delete id="deleteArchiveFileByIds" parameterType="String">
+        delete from archive_file where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

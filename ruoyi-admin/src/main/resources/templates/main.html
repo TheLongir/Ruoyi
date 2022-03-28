@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--360浏览器优先以webkit内核解析-->
+    <title>图书馆归档系统中心介绍</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link href="../static/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" rel="stylesheet"/>
+    <link href="../static/css/style.min.css" th:href="@{/css/style.min.css}" rel="stylesheet"/>
+</head>
+
+<body class="gray-bg">
+<div class="row border-bottom white-bg dashboard-header">
+    <div class="col-sm-3">
+        <h2>Hello,Guest</h2>
+        <small>移动设备访问请扫描以下二维码：</small>
+        <br>
+        <br>
+        <img th:src="@{/img/qr_code.png}" width="100%" style="max-width:264px;">
+        <br>
+    </div>
+    <div class="col-sm-5">
+        <h2>图书馆归档系统中心</h2>
+        <p>
+            在如今信息爆炸和数据爆炸的时代，Internet技术应用在全求范围内日益普及,当今社会正快速向信息化社会前进,信息系统的作用也越来越大.图书馆在正常运营中总是面对大量的读者信息，书籍信息以及由两者相互作用产生的借书信息，还书信息。因此图书管理信息化是发展的必然趋势。用结构化系统分析与设计的方法,建立一套有效的图书信息管理系统，可以减轻工作，将工作科学化、规范化,提高了图书馆信息管理的工作质量因此根据图书馆目前实际的管理情况开发一套图书归档系统是十分必要的。
+
+        </p>
+        <p>
+            <b>当前版本：</b><span>v[[${version}]]</span>
+        </p>
+        <p>
+            <span class="label label-warning">&yen;免费开源</span>
+        </p>
+        <br>
+        <p>
+            <a class="btn btn-success btn-outline" href="https://gitee.com/y_project/RuoYi" target="_blank">
+                <i class="fa fa-cloud"> </i> 访问码云
+            </a>
+            <a class="btn btn-white btn-bitbucket" href="http://ruoyi.vip" target="_blank">
+                <i class="fa fa-home"></i> 访问主页
+            </a>
+        </p>
+    </div>
+    <div class="col-sm-4">
+        <h4>技术选型：</h4>
+        <ol>
+            <li>核心框架：Spring Boot。</li>
+            <li>安全框架：Apache Shiro。</li>
+            <li>模板引擎：Thymeleaf。</li>
+            <li>持久层框架：MyBatis。</li>
+            <li>定时任务:Quartz。</li>
+            <li>数据库连接池：Druid。</li>
+            <li>工具类：Fastjson。</li>
+            <li>更多……</li>
+        </ol>
+    </div>
+
+</div>
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>捐赠</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="alert alert-warning">
+                        请作者喝杯咖啡（点击图片放大）
+                    </div>
+                    <p id="pay-qrcode">
+                        <a href="javascript:;"><img th:src="@{/img/paywx.png}" width="40%" alt="请使用手机微信扫码支付">
+                        </a>
+                        <a href="javascript:;"><img th:src="@{/img/payzfb.jpg}" width="40%" alt="请使用手机支付宝扫码支付">
+                        </a>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>联系信息</h5>
+
+                </div>
+                <div class="ibox-content">
+                    <p><i class="fa fa-send-o"></i> 官网：<a href="http://www.ruoyi.vip" target="_blank">http://www.ruoyi.vip</a>
+                    </p>
+                    <p>
+                        <i class="fa fa-qq"></i>QQ: 296525773
+                    </p>
+                    <p><i class="fa fa-weixin"></i> 微信：<a href="javascript:;">yyl296525773</a>
+                    </p>
+                    <p><i class="fa fa-credit-card"></i> 支付宝：<a href="javascript:;" class="支付宝信息">15897730879</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>更新日志</h5>
+                </div>
+                <div class="ibox-content no-padding">
+                    <div class="panel-body">
+                        <div class="panel-group" id="version">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#version" href="#v473">v4.7.3</a><code
+                                            class="pull-right">2022.03.01</code>
+                                    </h5>
+                                </div>
+                                <div id="v473" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <ol>
+                                            <li>表格树支持分页/异步加载</li>
+                                            <li>代码生成预览支持复制内容</li>
+                                            <li>定时任务默认保存到内存中执行</li>
+                                            <li>代码生成同步保留必填/类型选项</li>
+                                            <li>页面若未匹配到字典标签则返回原字典值</li>
+                                            <li>用户访问控制时校验数据权限，防止越权</li>
+                                            <li>导出Excel时屏蔽公式，防止CSV注入风险</li>
+                                            <li>升级spring-boot到最新版本2.5.10</li>
+                                            <li>升级spring-boot-mybatis到最新版2.2.2</li>
+                                            <li>升级pagehelper到最新版1.4.1</li>
+                                            <li>升级oshi到最新版本6.1.2</li>
+                                            <li>升级bootstrap-table到最新版本1.19.1</li>
+                                            <li>服务监控新增运行参数信息显示</li>
+                                            <li>定时任务目标字符串验证包名白名单</li>
+                                            <li>文件上传接口新增原/新文件名返回参数</li>
+                                            <li>定时任务屏蔽违规的字符</li>
+                                            <li>分页数据新增分页参数合理化参数</li>
+                                            <li>表格父子视图添加点击事件打开示例</li>
+                                            <li>优化上传文件名称命名规则</li>
+                                            <li>优化加载字典缓存数据</li>
+                                            <li>优化任务队列满时任务拒绝策略</li>
+                                            <li>优化IE11上传预览不显示的问题</li>
+                                            <li>优化Excel格式化不同类型的日期对象</li>
+                                            <li>优化国际化配置多余的zh请求问题</li>
+                                            <li>优化新版Chrome浏览器回退出现的遮罩层</li>
+                                            <li>修复EMAIL类型回退键被禁止问题</li>
+                                            <li>修复Xss注解字段值为空时的异常问题</li>
+                                            <li>其他细节优化</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                                <div id="v00" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ol>
+                                            <li>若依管理系统正式发布。</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div></div>
+    </div>
+</div>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/ajax/libs/layer/layer.min.js}"></script>
+<script type="text/javascript">
+    $('#pay-qrcode').click(function () {
+        var html = $(this).html();
+        parent.layer.open({
+            title: false,
+            type: 1,
+            closeBtn: false,
+            shadeClose: true,
+            area: ['600px', '360px'],
+            content: html
+        });
+    });
+</script>
+</body>
+</html>
